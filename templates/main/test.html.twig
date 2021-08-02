@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    {#
+        Ceci est un commentaire twig qui
+        ne s'affiche pas dans le navigateur
+    #}
+
+    <h1>Page de test</h1>
+
+    <div>{{ mySerie.title }}</div>
+
+    <div>{{ "now"|date('Y') }}</div>
+
+    {{"Petit texte pour tester"}}
+
+    {% set city = "Rennes" %}
+    <p>{{ city }}</p>
+
+    {# Checker la valeur de la variable #}
+    {% if city == "Rennes" %}
+        <p>Ville de Rennes </p>
+    {% elseif city == "Nantes" %}
+        <p>Ville de Nantes</p>
+    {% else %}
+        <p>Pas une ville répertoriée</p>
+    {% endif %}
+
+    {# Utilisation d'une boucle sur un tableau #}
+    {% set vegetables = ["Carotte", "Tomate", "Patate"] %}
+
+    <h1>Légumes :</h1>
+    {% for vegetable in vegetables %}
+        <p>{{ vegetable }}</p>
+    {% else %}
+        <p>Pas de légumes</p>
+    {% endfor %}
+
+    <p>Ingrédient à l'honneur : {{ vegetables[2] }}</p>
+
+    {# Utilisation d'une boucle sur un objet #}
+
+    {%
+        set user = {
+            'name' : 'Maxime',
+            'age' : 10,
+            'isactive': true
+        }
+     %}
+
+    <h1>{{ user.name }}</h1>
+    <dl>
+        {% for key, val in user %}
+            <dt>{{ key }}</dt>
+            <dd>{{ val }}</dd>
+        {% endfor %}
+    </dl>
+
+    {# Boucler sur un tableau avec plusieurs couleurs #}
+    <h1>Couleurs : </h1>
+    {% set colors = ["cornflowerblue", "brown", "blue", "green", "red"] %}
+    {% for color in colors %}
+        <div>{{ loop.index }}</div> {# affiche le n°de passage dans la bouce passage dans la boucle #}
+        <div>{{ loop.last }}</div> {# check si on est au dernier passage dans la boucle #}
+        <div style="color: {{ color }}">{{ color }}</div>
+    {% endfor %}
+
+    {# Application de filtres (pipe) #}
+    <h2> {{ user.name|upper }} </h2>
+    <p>Nombre de lettres dnas le nom : {{ user.name|length }}</p>
+
+    <h2>Affichage de toutes les couleurs</h2>
+    <div>{{ colors|join(' / ') }}</div>
+
+{% endblock %}
+
+{% block title %} {{ parent() }} | Page de test {% endblock %}
