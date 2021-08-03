@@ -1,6 +1,5 @@
 body {
-    background: linear-gradient(#000000, #132135);
-    background-attachment: fixed;
+    background: linear-gradient(#000000, #132135) fixed;
     color: #EEE;
     font-family: 'Crimson Text', serif;
 }
@@ -9,6 +8,7 @@ body {
     max-width: 1000px;
     margin: auto;
     padding: 5px;
+
 }
 
 a {
@@ -78,3 +78,21 @@ select{
 .flash-success{
     background-color: forestgreen;
 }
+
+article {
+    display: flex;
+    margin-top: 2rem;
+
+
+}
+
+.img-season {
+    height: 300px;
+}
+
+.overview-season{
+    margin-left: 2rem;
+    height: 450px;
+
+}
+
