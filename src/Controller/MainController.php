@@ -18,6 +18,7 @@ class MainController extends AbstractController
     }
 
     /**
+     * Page de test
      * @Route("/test", name="main_test")
      */
     public function test()
